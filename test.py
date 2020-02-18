@@ -7,9 +7,9 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('Quick-4d4e63a22b80.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('gjhelper-cc7069273059.json', scope)
 client = gspread.authorize(creds)
-doc = client.open_by_url('https://docs.google.com/spreadsheets/d/1WzFr_aNi6T_ievrOaVJK3hT2tRQsjltfACC6WL2qXNI')
+doc = client.open_by_url('https://docs.google.com/spreadsheets/d/1pUqtEZwMNqcQuGKNdaV2tmf02NjGNttzzDrR623A2Uo')
 
 
 
@@ -37,7 +37,7 @@ async def on_message(message):
 	if message.content.startswith('!퀵비'):
 		SearchID = message.content[len('!퀵비')+1:]
 		gc = gspread.authorize(creds)
-		wks = gc.open('퀵비확인시트').worksheet('시트1')
+		wks = gc.open('GJ퀵비관리').worksheet('시트1')
 		wks.update_acell('A1', SearchID)
 		result = wks.acell('B1').value
             
